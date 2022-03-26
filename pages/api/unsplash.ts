@@ -9,15 +9,30 @@ export default async function handler(
 ) {
     switch (req.method) {
         case 'GET':
-            res.json(await getUnsplashImages())
+
+            const page = (typeof req.query.page === "string")
+                ? parseInt(req.query.page)
+                : 1;
+
+            const searchText = (typeof req.query.search_text === "string")
+                ? req.query.search_text
+                : "";
+
+            res.json(await getUnsplashImages(page, searchText));
+
             break;
+
         default:
             res.status(404);
     }
     return;
 }
 
-const getUnsplashImages = async (page = 1, searchText = "", perPage = 20): Promise<UnsplashImageAPIObject[]> => {
+const getUnsplashImages = async (
+    page = 1,
+    searchText = "",
+    perPage = 20
+): Promise<UnsplashImageAPIObject[]> => {
 
     let imagesList = [];
 
