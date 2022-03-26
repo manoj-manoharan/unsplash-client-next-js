@@ -1,9 +1,10 @@
 import {UnsplashImageAPIObject} from "../types";
 
-const UnsplashImageCard = ({image}: { image: UnsplashImageAPIObject }) => {
+const UnsplashImageCard = ({className, image}: { className : string, image: UnsplashImageAPIObject }) => {
     return (
         <>
             <img
+                className={className}
                 src={image.urls.regular}
                 alt={image.alt_description}
             />

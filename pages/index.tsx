@@ -38,7 +38,7 @@ const Home = () => {
                 <ResponsiveMasonry columnsCountBreakPoints={{400: 1, 800: 2, 1200: 3}}>
                     <Masonry>
                         {images.map((image: UnsplashImageAPIObject, index) => {
-                            return <UnsplashImageCard key={image.id + index} image={image}/>;
+                            return <UnsplashImageCard key={image.id + index} className={styles.img} image={image}/>;
                         })}
                     </Masonry>
                 </ResponsiveMasonry>

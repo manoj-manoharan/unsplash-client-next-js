@@ -1,6 +1,5 @@
 import PropTypes from "prop-types"
 import React from "react"
-import styles from '../../styles/Masonary.module.css';
 
 class Masonry extends React.Component {
     getColumns() {
@@ -21,7 +20,13 @@ class Masonry extends React.Component {
         return this.getColumns().map((column, i) => (
             <div
                 key={i}
-                className={styles.column}
+                style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-start",
+                    alignContent: "stretch",
+                    gap: gutter,
+                }}
             >
                 {column.map((item) => item)}
             </div>
@@ -32,7 +37,17 @@ class Masonry extends React.Component {
         const {gutter, className, style} = this.props
         return (
             <div
-                className={className + " " + styles.container}
+                style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "center",
+                    alignContent: "stretch",
+                    boxSizing: "border-box",
+                    width: "100%",
+                    gap: gutter,
+                    ...style,
+                }}
+                className={className}
             >
                 {this.renderColumns()}
             </div>
