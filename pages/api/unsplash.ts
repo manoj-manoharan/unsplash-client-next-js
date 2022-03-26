@@ -1,7 +1,7 @@
 import type {NextApiRequest, NextApiResponse} from 'next'
 import {get, has} from "lodash";
 import axios from "axios";
-import {UnsplashImageAPIObject} from "../types";
+import {UnsplashImageAPIObject} from "../../types";
 
 export default async function handler(
     req: NextApiRequest,

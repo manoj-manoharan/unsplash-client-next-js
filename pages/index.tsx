@@ -2,10 +2,10 @@ import {has, get} from 'lodash';
 import {KeyboardEvent, useCallback, useEffect, useState} from "react";
 
 import styles from '../styles/Home.module.css'
-import {UnsplashImageAPIObject} from "./types";
-import ResponsiveMasonry from "./components/ResponsiveMasonry";
-import Masonry from "./components/Masonary";
-import UnsplashImageCard from "./components/UnsplashImageCard";
+import {UnsplashImageAPIObject} from "../types";
+import ResponsiveMasonry from "../components/ResponsiveMasonry";
+import Masonry from "../components/Masonary";
+import UnsplashImageCard from "../components/UnsplashImageCard";
 
 
 export default function Home() {
