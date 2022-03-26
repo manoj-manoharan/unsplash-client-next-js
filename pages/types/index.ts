@@ -1,0 +1,1 @@
+export type {UnsplashImageAPIObject} from './UnsplashImage'
