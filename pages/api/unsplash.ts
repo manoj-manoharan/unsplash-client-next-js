@@ -21,7 +21,7 @@ const getUnsplashImages = async (page = 1, searchText = "", perPage = 20): Promi
 
     let imagesList = [];
 
-    const authQueryParams = "client_id=eXZJk7ov2lWxpiKvfH3e90W85ycxZCtdTh54ahJsJro";
+    const authQueryParams = `client_id=${process.env.CLIENT_ID}`;
 
     const baseUrl = `https://api.unsplash.com/`;
 
