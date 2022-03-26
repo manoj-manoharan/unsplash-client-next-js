@@ -1,4 +1,5 @@
 import {UnsplashImageAPIObject} from "../types";
+import Image from 'next/image'
 
 const UnsplashImageCard = ({className, image}: { className : string, image: UnsplashImageAPIObject }) => {
     return (

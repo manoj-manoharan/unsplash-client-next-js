@@ -8,7 +8,7 @@ import Masonry from "./components/Masonary";
 import UnsplashImageCard from "./components/UnsplashImageCard";
 
 
-const Home = () => {
+export default function Home() {
 
     const [page, setPage] = useState(1);
     const [searchText, setSearchText] = useState("");
@@ -76,20 +76,9 @@ const useBuildApiUrl = (page: number, searchText: string, perPage = 20): string 
 
     useEffect(() => {
 
-        const authQueryParams = "client_id=eXZJk7ov2lWxpiKvfH3e90W85ycxZCtdTh54ahJsJro";
+        const baseUrl = `/api/unsplash?`;
 
-        const baseUrl = `https://api.unsplash.com/`;
-
-        const listPhotosUrl = `${baseUrl}/photos?`;
-        const searchPhotosUrl = `${baseUrl}/search/photos?`;
-
-        let finalApiUrl = listPhotosUrl;
-
-        if (searchText.length > 0) {
-            finalApiUrl = `${searchPhotosUrl}&query=${searchText}`;
-        }
-
-        seApiUrl(`${finalApiUrl}&${authQueryParams}&page=${page}&per_page=${perPage}`);
+        seApiUrl(`${baseUrl}&query=${searchText}&page=${page}&per_page=${perPage}`);
 
     }, [page, searchText, perPage])
 
@@ -100,17 +89,17 @@ const useFetchImages = (apiUrl: string) => {
 
     const [fetchedImages, setFetchedImages] = useState([]);
 
-    const getFormattedJsonFromApiResponse = (jsonResponse: any) => {
-        return has(jsonResponse, 'results')
-            ? get(jsonResponse, 'results', [])
-            : jsonResponse;
-    }
+    // const getFormattedJsonFromApiResponse = (jsonResponse: any) => {
+    //     return has(jsonResponse, 'results')
+    //         ? get(jsonResponse, 'results', [])
+    //         : jsonResponse;
+    // }
 
     useEffect(() => {
         (async () => {
             const apiResponse = await fetch(apiUrl);
             const jsonFromApi = await apiResponse.json()
-            setFetchedImages(getFormattedJsonFromApiResponse(jsonFromApi));
+            setFetchedImages(jsonFromApi);
         })();
     }, [apiUrl]);
 
@@ -150,5 +139,3 @@ const useOnReachViewportBottom = (scrollPosition: string, callbackToRun: Functio
         }
     }, [scrollPosition, callbackToRun]);
 }
-
-export default Home;
